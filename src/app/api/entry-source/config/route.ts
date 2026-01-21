@@ -6,6 +6,7 @@ export async function GET(request: NextRequest) {
 
   const config: ConfigResponse = {
     workflowApiVersion: "1.1",
+    key: process.env.ENTRY_SOURCE_KEY,
     metaData: {
       icon: "images/icon.png",
       category: "event",

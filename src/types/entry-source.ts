@@ -31,6 +31,7 @@ export interface ExecuteResponse {
 
 export interface ConfigResponse {
   workflowApiVersion: string;
+  key?: string;
   metaData: {
     icon: string;
     category: string;
