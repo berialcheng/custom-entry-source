@@ -89,7 +89,7 @@ export default function Home() {
               <li>
                 Set Endpoint URL to:{" "}
                 <code className="bg-amber-100 dark:bg-amber-800 px-1 rounded">
-                  https://your-app.vercel.app/api/entry-source/config
+                  https://your-app.vercel.app
                 </code>
               </li>
               <li>Save and use in Journey Builder</li>

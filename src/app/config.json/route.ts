@@ -132,12 +132,10 @@ export async function OPTIONS() {
 }
 
 function getBaseUrl(request: NextRequest): string {
-  // Check for custom base URL in environment
   if (process.env.NEXT_PUBLIC_BASE_URL) {
     return process.env.NEXT_PUBLIC_BASE_URL;
   }
 
-  // Fallback to request host
   const host = request.headers.get("host") || "localhost:3000";
   const protocol = request.headers.get("x-forwarded-proto") || "https";
   return `${protocol}://${host}`;
