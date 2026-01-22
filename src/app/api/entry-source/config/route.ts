@@ -111,22 +111,23 @@ export async function GET(request: NextRequest) {
   };
 
   const response = NextResponse.json(config);
-  response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set("Access-Control-Allow-Methods", "GET,OPTIONS");
-  response.headers.set(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization"
-  );
-  return response;
+  return withCors(response, request);
 }
 
-export async function OPTIONS() {
+export async function OPTIONS(request: NextRequest) {
   const response = new NextResponse(null, { status: 204 });
+  return withCors(response, request);
+}
+
+function withCors(response: NextResponse, request?: NextRequest) {
   response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set("Access-Control-Allow-Methods", "GET,OPTIONS");
+  const requestedHeaders = request?.headers.get(
+    "access-control-request-headers"
+  );
   response.headers.set(
     "Access-Control-Allow-Headers",
-    "Content-Type, Authorization"
+    requestedHeaders ?? "Content-Type, Authorization"
   );
   return response;
 }
